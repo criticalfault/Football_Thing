@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	<style type="">
+		/*
+			Sweet CSS3 loading spinner 
+		
+		*/
+		.loader 
+		{
+			margin: 0 auto;
+		    border: 16px solid #f3f3f3; /* Light grey */
+		    border-top: 16px solid #3498db; /* Blue */
+		    border-radius: 50%;
+		    width: 120px;
+		    height: 120px;
+		    animation: spin 2s linear infinite;
+		}
+
+		@keyframes spin 
+		{
+		    0% { transform: rotate(0deg); }
+		    100% { transform: rotate(360deg); }
+		}
+
+	</style>
+	</head>
+	<body>
+		<h1>SPORTS THING!</h1>
+		<p>Welcome to SPORTS THING</p>
+
+
+		<pre class="loader">
+
+		</pre>
+
+		{{!-- 
+		Consider using an Iframe instead of Div with the meta refresh tag to have the page constantly update itself! 
+		
+		Also the big issue we had was we needed to pass a string instead of the object itself. Then use JS on the front end to take care of the data. This setup cleans it up nicely.
+
+		 --}}
+		{{!-- <meta http-equiv="refresh" content="30"> --}}
+
+		<script type="text/javascript">
+		var str = '{{{xml}}}';
+
+		(function()
+		{
+			//All of this, just for effect :P
+			setTimeout(function()
+			{
+				var games = JSON.parse(str);
+
+				console.log(games);
+
+				document.querySelector('pre').classList.remove("loader");
+
+				document.querySelector('pre').innerHTML = JSON.stringify(games);
+			},2000);
+		})();
+		 	
+		</script>
+	</body>
+</html>
